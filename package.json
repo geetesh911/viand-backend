@@ -1,0 +1,38 @@
+{
+  "name": "contact-keeper",
+  "version": "1.0.0",
+  "description": "Contact Manager App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.4.1",
+    "config": "^3.2.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "materialize-css": "^1.0.0",
+    "mongoose": "^5.8.11",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-fontawesome": "^1.7.1",
+    "react-materialize": "^3.5.9",
+    "react-moment": "^0.9.7",
+    "react-router-dom": "^5.1.2",
+    "uuid": "^3.4.0",
+    "zomato": "^1.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2"
+  }
+}
