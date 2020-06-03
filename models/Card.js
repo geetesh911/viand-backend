@@ -3,56 +3,56 @@ const mongoose = require("mongoose");
 const CardSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "users"
+    ref: "users",
   },
   name: {
     type: String,
-    required: true
+    required: true,
   },
   rating: {
-    type: String
+    type: String,
     // required: true
   },
   menu: [
     {
       food: {
         type: String,
-        required: true
+        required: true,
       },
       price: {
-        type: Number
-      }
-    }
+        type: Number,
+      },
+    },
   ],
   review: {
     type: String,
-    default: null
+    default: null,
   },
   zomato: {
     type: String,
-    default: null
+    default: null,
   },
   beenThere: {
     type: Boolean,
-    default: false
+    default: false,
   },
   date: {
     type: Date,
     required: true,
-    default: Date.now
+    default: Date.now,
   },
   thumb: {
     type: String,
-    default: null
+    default: null,
   },
   location: {
     type: String,
-    default: null
+    default: null,
   },
   photos: {
     type: Array,
-    default: null
-  }
+    default: null,
+  },
 });
 
 module.exports = mongoose.model("card", CardSchema);

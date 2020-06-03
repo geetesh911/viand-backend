@@ -13,7 +13,7 @@ const router = express.Router();
 router.get("/", auth, async (req, res) => {
   try {
     const cards = await Card.find({ user: req.user.id }).sort({
-      date: -1
+      date: -1,
     });
     res.json(cards);
   } catch (err) {
@@ -30,11 +30,9 @@ router.post(
   [
     auth,
     [
-      check("name", "Name is required")
-        .not()
-        .isEmpty(),
-      check("zomato", "Enter correct URL").isURL()
-    ]
+      check("name", "Name is required").not().isEmpty(),
+      check("zomato", "Enter correct URL").isURL(),
+    ],
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -52,10 +50,14 @@ router.post(
       beenThere,
       thumb,
       location,
-      photos
+      photos,
     } = req.body;
 
     try {
+      let aleradyExist = await Card.find({ name: name });
+      if (aleradyExist.length > 0)
+        return res.status(400).json({ msg: "Place already exist" });
+
       const newCard = new Card({
         name,
         rating,
@@ -67,7 +69,7 @@ router.post(
         thumb,
         location,
         photos,
-        user: req.user.id
+        user: req.user.id,
       });
 
       const card = await newCard.save();
@@ -85,6 +87,10 @@ router.post(
 // @access  Public
 router.put("/:id", auth, async (req, res) => {
   const { name, rating, menu, date, review, zomato, beenThere } = req.body;
+
+  menu.forEach((m) => {
+    if (m.price === "undefined") m.price = undefined;
+  });
 
   // Build a card object
   const cardFields = {};
