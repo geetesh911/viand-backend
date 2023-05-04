@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb://geetesh911:geetesh911@viand-shard-00-00-mocb8.mongodb.net:27017,viand-shard-00-01-mocb8.mongodb.net:27017,viand-shard-00-02-mocb8.mongodb.net:27017/test?ssl=true&replicaSet=viand-shard-0&authSource=admin&retryWrites=true&w=majority",
+  "mongoURI": "mongodb+srv://geetesh911:geetesh911@viand.a0ct28h.mongodb.net/?retryWrites=true&w=majority",
   "jwtSecret": "geetesh911"
 }
